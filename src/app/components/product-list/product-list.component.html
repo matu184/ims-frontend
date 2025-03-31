@@ -1,0 +1,9 @@
+<div *ngIf="products$ | async as products">
+  <mat-card *ngFor="let product of products" class="mb-2">
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ product.description }}</p>
+      <strong>{{ product.price | currency:'EUR' }}</strong>
+    </mat-card-content>
+  </mat-card>
+</div>

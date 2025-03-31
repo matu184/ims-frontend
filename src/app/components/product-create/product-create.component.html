@@ -1,0 +1,35 @@
+<form (ngSubmit)="create()">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Produktname" [(ngModel)]="product.name" name="name" />
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Beschreibung" [(ngModel)]="product.description" name="description" />
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <input matInput type="number" placeholder="Menge" [(ngModel)]="product.quantity" name="quantity" />
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <input matInput type="number" placeholder="Mindestmenge" [(ngModel)]="product.minimumQuantity" name="minimumQuantity" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Kategorie</mat-label>
+        <mat-select [(ngModel)]="product.categoryId" name="categoryId">
+          <mat-option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field class="full-width">
+        <mat-label>Standort</mat-label>
+        <mat-select [(ngModel)]="product.locationId" name="locationId">
+          <mat-option *ngFor="let loc of locations" [value]="loc.id">{{ loc.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+  
+    <button mat-raised-button color="primary" type="submit">Produkt anlegen</button>
+  </form>
+  
