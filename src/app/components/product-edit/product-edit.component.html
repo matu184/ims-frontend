@@ -1,0 +1,46 @@
+<mat-card>
+    <h2>Produkt bearbeiten</h2>
+  
+    <form (ngSubmit)="update()">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Produktname</mat-label>
+        <input matInput [(ngModel)]="product.name" name="name" required />
+      </mat-form-field>
+  
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Beschreibung</mat-label>
+        <input matInput [(ngModel)]="product.description" name="description" />
+      </mat-form-field>
+  
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Menge</mat-label>
+        <input matInput type="number" [(ngModel)]="product.quantity" name="quantity" required />
+      </mat-form-field>
+  
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Mindestmenge</mat-label>
+        <input matInput type="number" [(ngModel)]="product.minimumQuantity" name="minimumQuantity" />
+      </mat-form-field>
+  
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Kategorie-ID</mat-label>
+        <input matInput type="number" [(ngModel)]="product.categoryId" name="categoryId" />
+      </mat-form-field>
+  
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Standort-ID</mat-label>
+        <input matInput type="number" [(ngModel)]="product.locationId" name="locationId" />
+      </mat-form-field>
+  
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Preis</mat-label>
+        <input matInput type="number" [(ngModel)]="product.price" name="price" />
+      </mat-form-field>
+  
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit">Speichern</button>
+        <button mat-raised-button color="accent" [routerLink]="['/products']">Abbrechen</button>
+      </div>
+    </form>
+  </mat-card>
+  

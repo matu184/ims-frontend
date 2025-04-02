@@ -1,0 +1,17 @@
+.form-card {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  
+  .form-actions {
+    margin-top: 2rem;
+    text-align: right;
+  }
+  

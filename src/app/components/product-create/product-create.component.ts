@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
-
-import { Product } from '../../models/product.model';
-import { Category } from '../../models/category.model';
-import { Location } from '../../models/location.model';
-
 import { ProductService } from '../../services/product.service';
 import { CategoryService } from '../../services/category.service';
 import { LocationService } from '../../services/location.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { NgFor } from '@angular/common';
+import { Product } from '../../models/product.model';
+import { Category } from '../../models/category.model';
+import { Location } from '../../models/location.model';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 @Component({
   selector: 'app-product-create',
@@ -24,8 +27,9 @@ import { LocationService } from '../../services/location.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatCardModule,
     MatSelectModule,
-    MatOptionModule
+    NgFor
   ],
   templateUrl: './product-create.component.html',
   styleUrls: ['./product-create.component.css']
@@ -47,17 +51,21 @@ export class ProductCreateComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe((data: Category[]) => this.categories = data);
-    this.locationService.getLocations().subscribe((data: Location[]) => this.locations = data);
+    this.categoryService.getCategories().subscribe(data => this.categories = data);
+    this.locationService.getLocations().subscribe(data => this.locations = data);
   }
 
   create(): void {
     this.productService.createProduct(this.product).subscribe(() => {
-      alert('Produkt erfolgreich erstellt!');
+      this.snackBar.open('Produkt erfolgreich erstellt!', 'OK', {
+        duration: 3000});
+      this.router.navigate(['/products']);
     });
   }
 }
