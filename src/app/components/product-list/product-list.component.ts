@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { AuthService } from '../../services/auth.service';
 
 
 
@@ -21,10 +22,13 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products$: Observable<Product[]> | undefined;
-p: any;
+  products$: Observable<Product[]> | undefined; p: any;
 
-  constructor(private productService: ProductService, private snackBar: MatSnackBar, private dialog: MatDialog) {}
+  constructor(
+    private productService: ProductService, 
+    private snackBar: MatSnackBar, 
+    private dialog: MatDialog, 
+    public authService: AuthService) {}
 
   ngOnInit(): void {
     this.products$ = this.productService.products$;

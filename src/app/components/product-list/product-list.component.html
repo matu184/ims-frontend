@@ -12,7 +12,7 @@
       <p><strong>Standort:</strong> {{ product.location?.name || 'Nicht zugewiesen' }}</p>
     </mat-card-content>
 
-    <mat-card-actions align="end">
+    <mat-card-actions align="end" *ngIf="authService.getUserRole() === 'Admin'">
       <button mat-raised-button color="primary" class="btn" [routerLink]="['/products/edit', product.id]">
         Bearbeiten
       </button>

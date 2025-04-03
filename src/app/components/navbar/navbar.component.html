@@ -1,10 +1,20 @@
 <mat-toolbar>
     <span>IMS</span>
+    <span *ngIf="authService.isLoggedIn()">Rolle: {{ authService.getUserRole() }}</span>
     <span class="spacer"></span>
     <button mat-button routerLink="/">Dashboard</button>
     <button mat-button routerLink="/products">Produkte</button>
-    <button mat-button routerLink="/login">Login</button>
-    <button mat-button routerLink="/products/create">Neues Produkt</button>
+    <button mat-button *ngIf="authService.getUserRole() === 'Admin'" routerLink="/products/create">
+      Neues Produkt
+    </button>
+    
+    <button mat-button routerLink="/register">Registrieren</button>
+    <button mat-button *ngIf="authService.isLoggedIn()" (click)="logout()">Logout</button>
+    <button mat-button *ngIf="!authService.isLoggedIn()" routerLink="/login">Login</button>
+
+
+
+
 
   </mat-toolbar>
   

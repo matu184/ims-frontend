@@ -14,7 +14,7 @@ import { Product } from '../../models/product.model';
 import { Category } from '../../models/category.model';
 import { Location } from '../../models/location.model';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -29,7 +29,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatButtonModule,
     MatCardModule,
     MatSelectModule,
-    NgFor
+    NgFor,
+    MatSnackBarModule
   ],
   templateUrl: './product-create.component.html',
   styleUrls: ['./product-create.component.css']
